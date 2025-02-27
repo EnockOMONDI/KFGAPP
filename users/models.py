@@ -42,9 +42,9 @@ class Editpage(models.Model):
 
     ]
 
-    section_name = models.CharField(max_length=100, choices=SECTION_CHOICES, unique=True)
-    heading = RichTextField()
-    content = RichTextField() 
+    section_name = models.CharField(max_length=100, choices=SECTION_CHOICES, unique=True, blank=True, null=True)
+    heading = RichTextField(blank=True, null=True)
+    content = RichTextField(blank=True, null=True) 
     
 
     def __str__(self):
