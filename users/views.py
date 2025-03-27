@@ -62,18 +62,14 @@ def aboutus(request):
     return render(request, 'aboutus.html', content)
 
 def gallery(request):
-    try:
-        images = Gallery.objects.all()
-        # Filter out entries with invalid images if needed
-        images = [img for img in images if img.image and getattr(img.image, 'uuid', None)]
-    except Exception as e:
-        images = []
-        
+    galleries = Gallery.objects.all()
+    
+    # Remove the debug print that was causing the error
     footer = Editpage.objects.filter(section_name='footer').first()
     volunteer = Editpage.objects.filter(section_name='Volunteer').first()
     
     content = {
-        'images': images,
+        'galleries': galleries,
         'volunteer': volunteer,
         'footer': footer,
     }

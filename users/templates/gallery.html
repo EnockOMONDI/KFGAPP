@@ -37,42 +37,75 @@
         </div>
 
         <!-- Main Gallery Event (Previous Content) -->
-        <div class="gallery-event mb-5">
-            <h3 class="event-title mb-4">Recent Events</h3>
-            <div class="gallery-container">
-                {% for image in images %}
-                <div class="gallery-item">
-                    <img src="{{ image.image.cdn_url }}" alt="{{ image.title }}">
-                    {% if image.title %}
-                        <h3>{{ image.title }}</h3>
-                    {% endif %}
-                    {% if image.description %}
-                        <p>{{ image.description }}</p>
-                    {% endif %}
-                </div>
-            {% endfor %}
-            </div>
-        </div>
+        <!-- Main Gallery Event (Previous Content) -->
+<!-- Main Gallery Event (Previous Content) -->
+<!-- Main Gallery Event (Previous Content) -->
+<!-- Main Gallery Event (Previous Content) -->
+<!-- Main Gallery Event (Previous Content) -->
+<div class="gallery-event mb-5">
+    <h3 class="event-title mb-4">Recent Events</h3>
+    <div class="gallery-container">
+        {% for gallery in galleries %}
+            {% if gallery.images %}
+                {% for file in gallery.images %}
+                    <div class="gallery-item">
+                        <img src="{{ file }}" alt="{{ gallery.title }}">
+                        {% if gallery.title %}
+                            <h3>{{ gallery.title }}</h3>
+                        {% endif %}
+                        {% if gallery.description %}
+                            <p>{{ gallery.description }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
     </div>
 </section>
 
 <style>
     .gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
 
-.gallery-item {
-    width: 100%;
-}
+    .gallery-item {
+        width: 100%;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
 
-.gallery-item img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
+    .gallery-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .gallery-item h3, .gallery-item p {
+        padding: 10px;
+        margin: 0;
+    }
+
+    .gallery-item h3 {
+        font-size: 1.2rem;
+        color: #333;
+    }
+
+    .gallery-item p {
+        font-size: 0.9rem;
+        color: #666;
+    }
 </style>
 
 <style>

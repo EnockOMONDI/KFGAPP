@@ -161,6 +161,8 @@ UPLOADCARE = {
 
   'pub_key': 'b6b033bebf2d2cd8f1b4',
   'secret': '4f8b79aab7290257b5ee',
+  'widget_version': '3.x',  # Use the latest widget version
+    'widget_build': 'full',
 }
 
 CKEDITOR_UPLOAD_PATH = "uploads/"

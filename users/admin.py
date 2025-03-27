@@ -9,9 +9,8 @@ class EditpageAdmin(admin.ModelAdmin):
 admin.site.register(Profile)
 admin.site.register(Editpage, EditpageAdmin)
 
+
 @admin.register(Gallery)
 class GalleryAdmin(admin.ModelAdmin):
-    list_display = ['title', 'uploaded_at']
-    list_filter = ['uploaded_at']
-    search_fields = ['title', 'description']
-    ordering = ['-uploaded_at']
+    list_display = ('title',)
+    search_fields = ('title', 'description')

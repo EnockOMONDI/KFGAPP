@@ -6,8 +6,10 @@ from taggit.managers import TaggableManager
 from html import unescape
 from django.utils.html import strip_tags
 from shortuuid.django_fields import ShortUUIDField
-from pyuploadcare.dj.models import ImageField
+from pyuploadcare.dj.models import ImageField, FileGroupField
 from ckeditor.fields import RichTextField
+from pyuploadcare.dj.models import FileField
+from pyuploadcare.dj.forms import FileWidget
 
 # Create your models here.
 class Profile(models.Model):
@@ -50,15 +52,19 @@ class Editpage(models.Model):
     def __str__(self):
         return self.get_section_name_display()
     
+
+
 class Gallery(models.Model):
     title = models.CharField(max_length=200, blank=True)
-    image = ImageField(blank=True,null=True)  # Uploadcare ImageField
     description = models.TextField(blank=True)
-    uploaded_at = models.DateTimeField(auto_now_add=True)
+    images = FileGroupField(
+        blank=True,
+        null=True
+    )
     
-    class Meta:
-        verbose_name_plural = 'Galleries'
-        ordering = ['-uploaded_at']
-        
     def __str__(self):
-        return self.title or f"Gallery Image {self.id}"
+        return self.title or "Untitled"
+
+    class Meta:
+        verbose_name_plural = "Galleries"
+
