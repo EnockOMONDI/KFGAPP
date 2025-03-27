@@ -8,79 +8,97 @@
 </div>
     <div class="page-wrapper">
 
-        <!-- Main Slider Start -->
         <section class="main-slider main-slider-two">
-            <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
-    "effect": "fade",
-    "pagination": {
-        "el": "#main-slider-pagination",
-        "type": "bullets",
-        "clickable": true
-      },
-    "navigation": {
-        "nextEl": ".main-slider-button-next",
-        "prevEl": ".main-slider-button-prev",
-        "clickable": true
-    },
-    "autoplay": {
-        "delay": 5000
-    }}'>
-
-    <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <div class="image-layer" style="background-image: url('{% static 'assets/images/main-slider/slider-2-1.jpg' %}');"></div>
-            <br>
-            <div class="container">
-                <div class="swiper-slide__inner">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <h3 class="">{% if hnew %}{{ hnew.heading | safe }}{% else %}Big title here{% endif %}</h3>
-                            <p class="">{% if hnew %}{{ hnew.content | safe }}{% else %}small title here{% endif %}</p>
+            <div class="swiper-container thm-swiper__slider" data-swiper-options='{
+                "slidesPerView": 1,
+                "loop": true,
+                "effect": "fade",
+                "pagination": {
+                    "el": "#main-slider-pagination",
+                    "type": "bullets",
+                    "clickable": true
+                },
+                "navigation": {
+                    "nextEl": ".main-slider-button-next",
+                    "prevEl": ".main-slider-button-prev",
+                    "clickable": true
+                },
+                "autoplay": {
+                    "delay": 5000
+                }}'>
+                
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 --> 
+                    <div class="swiper-slide">
+                        <br><br><br>
+<div class="image-layer" style="background-image: url('{% if hnew.slider_image %}{{ hnew.slider_image.cdn_url }}{% else %}{% static 'assets/images/main-slider/slider-2-1.jpg' %}{% endif %}');"></div>                       
+                        <div class="container">
+                            <div class="swiper-slide__inner">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        {% if hnew %}
+                                            <h2>{{ hnew.heading | safe }}</h2>
+                                            <p>{{ hnew.content | safe }}</p>
+                                        {% else %}
+                                            <h2>Small title here</h2>
+                                            <p>Big title here</p>
+                                        {% endif %}
+                                        <br><br>
+                                        <a href="{% url 'users:aboutus' %}" class="thm-btn">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <a href="{% url 'users:aboutus' %}" class="thm-btn">Learn More</a>
+                    </div>
+        
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <br><br><br>
+                        <div class="image-layer" style="background-image: url('{% if hneww.slider_image %}{{ hneww.slider_image.cdn_url }}{% else %}{% static 'assets/images/main-slider/slider-2-1.jpg' %}{% endif %}');"></div>                      
+                        <div class="container">
+                            <div class="swiper-slide__inner">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        {% if hneww %}
+                                            <h2>{{ hneww.heading | safe }}</h2>
+                                            <p>{{ hneww.content | safe }}</p>
+                                        {% else %}
+                                            <h2>Small title here</h2>
+                                            <p>Big title here</p>
+                                        {% endif %}
+                                        <br><br>
+                                        <a href="{% url 'users:aboutus' %}" class="thm-btn">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide"> 
+                        <br><br><br>
+                        <div class="image-layer" style="background-image: url('{% if hnewww.slider_image %}{{ hnewww.slider_image.cdn_url }}{% else %}{% static 'assets/images/main-slider/slider-2-1.jpg' %}{% endif %}');"></div>                        <div class="container">
+                            <div class="swiper-slide__inner">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        {% if hnewww %}
+                                            <h2>{{ hnewww.heading | safe }}</h2>
+                                            <p>{{ hnewww.content | safe }}</p>
+                                        {% else %}
+                                            <h2>Small title here</h2>
+                                            <p>Big title here</p>
+                                        {% endif %}
+                                        <br><br>
+                                        <a href="{% url 'users:aboutus' %}" class="thm-btn">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    
-        <div class="swiper-slide">
-            <div class="image-layer" style="background-image: url('{% static 'assets/images/main-slider/slider-2-2.jpg' %}');"></div>
-            <br>
-            <div class="container">
-                <div class="swiper-slide__inner">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <h3 class="">{% if hneww %}{{ hneww.heading | safe }}{% else %}Big title here{% endif %}</h3>
-                            <p class="">{% if hneww %}{{ hneww.content | safe }}{% else %}small title here{% endif %}</p>
-                        </div>
-                        <a href="{% url 'users:aboutus' %}" class="thm-btn">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="swiper-slide">
-            <div class="image-layer" style="background-image: url('{% static 'assets/images/main-slider/slider-2-1.jpg' %}');"></div>
-            <br>
-            <div class="container">
-                <div class="swiper-slide__inner">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <h3 class="">{% if hnewww %}{{ hnewww.heading | safe }}{% else %}Big title here{% endif %}</h3>
-                            <p class="">{% if hnewww %}{{ hnewww.content | safe }}{% else %}small title here{% endif %}</p>
-                        </div>
-                        <a href="{% url 'users:aboutus' %}" class="thm-btn">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="swiper-pagination" id="main-slider-pagination">
-
-                </div>
+                <div class="swiper-pagination" id="main-slider-pagination"></div>
             </div>
         </section>
-
         <!-- Main Slider End -->
 
         <section class="feature-one">

@@ -1,0 +1,192 @@
+{% extends 'basemain.html' %}
+{% load static %}
+
+{% block content %}
+<section class="gallery-page">
+    <div class="container">
+        <!-- Page Title -->
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="section-title">Our Gallery</h2>
+                <div class="section-title-divider"></div>
+            </div>
+        </div>
+
+        <!-- Featured Section -->
+        <div class="featured-section mb-5">
+            <h3 class="featured-title mb-4">Featured Stories</h3>
+            <div class="row g-4">
+                <!-- Featured Story Card 1 -->
+                <div class="col-md-4">
+                    <div class="featured-card">
+                        <div class="featured-image">
+                            <img src="{% static 'assets/images/resources/kellyshitambasi.jpeg' %}" 
+                                 alt="Featured Story" 
+                                 class="img-fluid">
+                        </div>
+                        <div class="featured-content">
+                            <h4>Kelly Shitambasi’s journey from cancer to community</h4>
+                            <p>Kelly Shitambasi, a 28-year-old Kenyan cancer survivor, transformed her personal struggles into a powerful mission. Diagnosed with melanoma at 14 ...</p>
+                            <a href="https://canvasrebel.com/meet-kelly-shitambasi/" target="_blank" class="view-story-btn">View Whole Story →</a>
+                        </div>
+                    </div>
+                </div>
+
+             
+            </div>
+        </div>
+
+        <!-- Main Gallery Event (Previous Content) -->
+        <div class="gallery-event mb-5">
+            <h3 class="event-title mb-4">Recent Events</h3>
+            <div class="gallery-container">
+                {% for image in images %}
+                <div class="gallery-item">
+                    <img src="{{ image.image.cdn_url }}" alt="{{ image.title }}">
+                    {% if image.title %}
+                        <h3>{{ image.title }}</h3>
+                    {% endif %}
+                    {% if image.description %}
+                        <p>{{ image.description }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery-item {
+    width: 100%;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+</style>
+
+<style>
+    .gallery-page {
+        padding: 100px 0;
+        background-color: #f8f9fa;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+    
+    .section-title-divider {
+        width: 80px;
+        height: 3px;
+        background-color: #ff4d4d;
+        margin: 0 auto;
+    }
+
+    /* Featured Section Styles */
+    .featured-section {
+        padding: 30px 0;
+    }
+
+    .featured-title, .event-title {
+        font-size: 1.8rem;
+        color: #333;
+        position: relative;
+        padding-left: 15px;
+        border-left: 4px solid #ff4d4d;
+    }
+
+    .featured-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .featured-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .featured-image {
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .featured-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .featured-content {
+        padding: 20px;
+    }
+
+    .featured-content h4 {
+        color: #333;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+    }
+
+    .featured-content p {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .view-story-btn {
+        color: #ff4d4d;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .view-story-btn:hover {
+        color: #ff1a1a;
+    }
+    
+    /* Existing Styles */
+    .gallery-image {
+        transition: transform 0.3s ease;
+    }
+    
+    .gallery-image:hover {
+        transform: scale(1.02);
+    }
+    
+    .event-description {
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    }
+    
+    .badge {
+        margin-right: 5px;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+        .featured-image {
+            height: 180px;
+        }
+        
+        .featured-content {
+            padding: 15px;
+        }
+    }
+</style>
+{% endblock %}

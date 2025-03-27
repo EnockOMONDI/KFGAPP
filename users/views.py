@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
-from . models import Editpage
+from . models import Editpage, Gallery  # Add Gallery to the imports
 
 from django.shortcuts import render,redirect,HttpResponse
 from django.http import Http404
+
+# In Django shell or management command
 
 
 def home(request):
@@ -59,6 +61,24 @@ def aboutus(request):
     
     return render(request, 'aboutus.html', content)
 
+def gallery(request):
+    try:
+        images = Gallery.objects.all()
+        # Filter out entries with invalid images if needed
+        images = [img for img in images if img.image and getattr(img.image, 'uuid', None)]
+    except Exception as e:
+        images = []
+        
+    footer = Editpage.objects.filter(section_name='footer').first()
+    volunteer = Editpage.objects.filter(section_name='Volunteer').first()
+    
+    content = {
+        'images': images,
+        'volunteer': volunteer,
+        'footer': footer,
+    }
+    return render(request, 'gallery.html', content)
+
 def programs(request):
     footer = Editpage.objects.filter(section_name='footer').first()
     our_programs = Editpage.objects.filter(section_name='our_Programs').first()
@@ -95,6 +115,11 @@ def ourteam(request):
 def contactus(request):
     
     return render(request, 'contactus.html')
+
+
+
+
+
 
 # Create your views here.
 def register(request):

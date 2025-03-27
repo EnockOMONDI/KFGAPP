@@ -50,4 +50,15 @@ class Editpage(models.Model):
     def __str__(self):
         return self.get_section_name_display()
     
+class Gallery(models.Model):
+    title = models.CharField(max_length=200, blank=True)
+    image = ImageField(blank=True,null=True)  # Uploadcare ImageField
+    description = models.TextField(blank=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
     
+    class Meta:
+        verbose_name_plural = 'Galleries'
+        ordering = ['-uploaded_at']
+        
+    def __str__(self):
+        return self.title or f"Gallery Image {self.id}"

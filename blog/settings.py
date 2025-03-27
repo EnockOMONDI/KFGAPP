@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'taggit',
     'import_export',
     'ckeditor_uploader',
+    'pyuploadcare.dj',
 ]
 
 
@@ -158,8 +159,8 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"#
 UPLOADCARE = {
   # Don’t forget to set real keys when it gets real :)
 
-  'pub_key': 'f914008525312051b54c',
-  'secret': '06f605e3fa31437f2a51',
+  'pub_key': 'b6b033bebf2d2cd8f1b4',
+  'secret': '4f8b79aab7290257b5ee',
 }
 
 CKEDITOR_UPLOAD_PATH = "uploads/"

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Profile,Editpage
+from . models import Profile,Editpage,Gallery
 
 
 class EditpageAdmin(admin.ModelAdmin):
@@ -8,3 +8,10 @@ class EditpageAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Profile)
 admin.site.register(Editpage, EditpageAdmin)
+
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ['title', 'uploaded_at']
+    list_filter = ['uploaded_at']
+    search_fields = ['title', 'description']
+    ordering = ['-uploaded_at']
